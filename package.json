@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "sandbox" 
+  },
+  "dependencies": {
+    "@architect/functions": "^5.1.0",
+    "@architect/sandbox": "^5.2.5"
+  }
+}
