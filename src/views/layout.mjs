@@ -32,30 +32,19 @@ p {
   </style>
 </head>
 <body>
-
 <nav>
   <p>@brianleroux</p>
-  <a href="https://github.com/brianleroux">🐙 gh</a>
-  <a href="https://www.npmjs.com/~brianleroux">🐴 npm</a>
-  <a href="https://twitter.com/brianleroux">🐦 twtr</a>
-
+  <a href="https://github.com/brianleroux" rel="me">🐙 gh</a>
+  <a href="https://www.npmjs.com/~brianleroux" rel="me">🐴 npm</a>
+  <a href="https://twitter.com/brianleroux" rel="me">🐦 twtr</a>
   <p>Work</p>
   <a href="https://begin.com">☀ begin</a>
-
   <p>Projects</p>
   <a href="https://arc.codes">🆕 arc.codes</a>
-  <a href="https://github.com/smallwins/slack">🎉 slack</a>
   <a href="https://cordova.apache.org">📲 cordova</a>
   <a href="https://wtfjs.com">⁉ wtfjs</a>
 </nav>
-
-
-
-
-
-
 </body>
-
 </html>
 `
 }
