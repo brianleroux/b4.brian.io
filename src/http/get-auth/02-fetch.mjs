@@ -18,7 +18,7 @@ function fmt (params) {
   let { items } = params
   if (items) {
     for (let i of items) {
-      if (i.type == 'h-card' || i.type === 'h-app' || i.type == 'h-x-app') {
+      if (i.type[0] == 'h-card' || i.type[0] === 'h-app' || i.type[0] == 'h-x-app') {
         let result = {}
         result.logo = i.properties.logo[0]
         result.name = i.properties.name[0]
