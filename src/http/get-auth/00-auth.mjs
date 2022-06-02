@@ -1,8 +1,2 @@
-export default async function auth (req) {
-  if (!req.session.loggedIn) {
-    return {
-      code: 409,
-      json: { errors: ['not_authorized'] }
-    }
-  }
-}
+import { auth } from '@architect/shared/middleware.mjs'
+export default auth

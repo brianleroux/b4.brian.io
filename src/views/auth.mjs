@@ -1,4 +1,4 @@
-export default function renderauth ({ website, scopes }) {
+export default function renderauth ({ website, scopes, meta }) {
   let msg = `<h1>Authorize ${website} to use your account?</h1>`
   if (scopes) {
     msg += `This application will be able to:`
@@ -7,5 +7,5 @@ export default function renderauth ({ website, scopes }) {
     }
   }
   msg += `<button>Authorize</button>`
-  return `<form action=/authorize method=post>${ msg }</form>`
+  return `<form action=/approve method=post>${ msg }</form><pre>${JSON.stringify(meta, null, 2)}</pre>`
 }

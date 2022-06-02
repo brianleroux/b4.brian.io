@@ -4,10 +4,12 @@
     "lint": "eslint src --fix"
   },
   "dependencies": {
-    "@architect/functions": "^5.1.0",
     "@architect/eslint-config": "^2.0.1",
+    "@architect/functions": "^5.1.0",
     "@architect/sandbox": "^5.2.5",
-    "eslint": "^8.16.0"
+    "eslint": "^8.16.0",
+    "microformats-parser": "^1.4.1",
+    "tiny-json-http": "^7.4.2"
   },
   "eslintConfig": {
     "extends": "@architect/eslint-config",

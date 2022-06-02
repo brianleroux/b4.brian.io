@@ -2,6 +2,7 @@ import layout from '@architect/views/old.mjs'
 
 /** note; we are using a plugin for multiValueheaders */
 export async function handler (req) {
+  let meta = `<https://${process.env.DOMAIN}/meta>; rel="indieauth-metadata"`
   let auth = `<https://${process.env.DOMAIN}/auth>; rel="authorization_endpoint"`
   let token = `<https://${process.env.DOMAIN}/token>; rel="token_endpoint"`
   return {
@@ -11,7 +12,7 @@ export async function handler (req) {
       'content-type': 'text/html; charset=utf8'
     },
     multiValueHeaders: {
-      'Link': [auth, token]
+      'Link': [meta, auth, token]
     },
     body: layout()
   }
