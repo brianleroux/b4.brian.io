@@ -1,10 +1,10 @@
 import arc from '@architect/functions'
-import login from '@architect/views/login.mjs'
+import render from '@architect/views/login.mjs'
 
-export let handler = arc.http.async(fn)
+export let handler = arc.http.async(login)
 
-async function fn (req) {
+async function login (req) {
   return {
-    html: login(req)
+    html: render(req.session || {})
   }
 }

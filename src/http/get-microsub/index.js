@@ -1,5 +1,5 @@
 // learn more about HTTP functions here: https://arc.codes/http
-exports.handler = async function http (req) {
+exports.handler = async function http () {
   return {
     statusCode: 200,
     headers: {
@@ -29,7 +29,7 @@ exports.handler = async function http (req) {
           Get started by editing this file at:
         </p>
         <code>
-          src/http/get-auth/index.js
+          src/http/get-microsub/index.js
         </code>
       </div>
       <div>

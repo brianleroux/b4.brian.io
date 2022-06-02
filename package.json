@@ -1,9 +1,24 @@
 {
   "scripts": {
-    "start": "sandbox" 
+    "start": "sandbox",
+    "lint": "eslint src --fix"
   },
   "dependencies": {
     "@architect/functions": "^5.1.0",
-    "@architect/sandbox": "^5.2.5"
+    "@architect/eslint-config": "^2.0.1",
+    "@architect/sandbox": "^5.2.5",
+    "eslint": "^8.16.0"
+  },
+  "eslintConfig": {
+    "extends": "@architect/eslint-config",
+    "rules": {
+      "require-await": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_|^state"
+        }
+      ]
+    }
   }
 }

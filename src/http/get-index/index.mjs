@@ -1,5 +1,6 @@
-import layout from '@architect/views/layout.mjs'
+import layout from '@architect/views/old.mjs'
 
+/** note; we are using a plugin for multiValueheaders */
 export async function handler (req) {
   let auth = `<https://${process.env.DOMAIN}/auth>; rel="authorization_endpoint"`
   let token = `<https://${process.env.DOMAIN}/token>; rel="token_endpoint"`

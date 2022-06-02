@@ -1,4 +1,10 @@
-export default function login() {
+export default function login({loggedIn}) {
+  if (loggedIn) {
+    return `welcome back brian.
+    <form action=/logout method=post>
+      <button>logout</button>
+    </form>`
+  }
   return `
 <form action=/login method=post>
 <input 
