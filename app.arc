@@ -29,3 +29,4 @@ codes
 profile personal
 region us-west-2
 architecture arm64
+runtime nodejs16.x
