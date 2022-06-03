@@ -20,11 +20,14 @@ function fmt (params) {
     for (let i of items) {
       if (i.type[0] == 'h-card' || i.type[0] === 'h-app' || i.type[0] == 'h-x-app') {
         let result = {}
-        result.logo = i.properties.logo[0]
-        result.name = i.properties.name[0]
-        result.url = i.properties.url[0]
+        if (i.properties.logo)
+          result.logo = i.properties.logo[0]
+        if (i.properties.name)
+          result.name = i.properties.name[0]
+        if (i.properties.url)
+          result.url = i.properties.url[0]
         return result
-      }  
+      } 
     }
   }
   else {

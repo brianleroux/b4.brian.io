@@ -1,12 +1,6 @@
 import arc from '@architect/functions'
 
-let fn = arc.http.async(login)
-
-export async function handler(req) {
-  let res = await fn(req)
-  console.log('====>', JSON.stringify(res, null, 2))
-  return res
-}
+export let handler = arc.http.async(login)
 
 async function login (req) {
   if (!process.env.PASSWORD) {

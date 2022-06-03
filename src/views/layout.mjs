@@ -1,5 +1,8 @@
-export default function layout() {
+import arc from '@architect/functions'
+
+export default function layout({ body='', page='index' }) {
   let domain = process.env.ARC_ENV === 'testing'? 'localhost:3333' : process.env.DOMAIN
+  let css = page === 'auth'? '/auth.css' : '/index.css'
 return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,26 +13,7 @@ return `<!DOCTYPE html>
   <link rel="token_endpoint" href="https://${domain}/token">
   <link rel="microsub" href="https://${domain}/microsub">
   <title>brian.io</title>
-  <style>
-     * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; } .max-width-320 { max-width: 20rem; } .margin-left-8 { margin-left: 0.5rem; } .margin-bottom-16 { margin-bottom: 1rem; } .margin-bottom-8 { margin-bottom: 0.5rem; } .padding-32 { padding: 2rem; } .color-grey { color: #333; } .color-black-link:hover { color: black; } 
-nav {
-  margin: 15% auto 0 auto;
-  width: 200px;
-  list-style: none;
-  text-align: center;
-}
-
-a {
-  display: block;
-  text-decoration: none;
-}
-
-p {
-  margin: 20px 0 0 0;
-  font-style: oblique;
-}
-
-  </style>
+  <link rel="stylesheet" href="${ arc.static(css) }">
 </head>
 <body>
 <nav>
@@ -44,6 +28,7 @@ p {
   <a href="https://cordova.apache.org">📲 cordova</a>
   <a href="https://wtfjs.com">⁉ wtfjs</a>
 </nav>
+<main>${ body }</main>
 </body>
 </html>
 `

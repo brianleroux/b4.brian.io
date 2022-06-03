@@ -1,0 +1,33 @@
+* { margin: 0; padding: 0; box-sizing: border-box; } 
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; } 
+
+nav {
+  display: none;
+}
+
+header img { 
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+main {
+  color:#666;
+  border: 3px solid white;
+  background: #ecedf1;
+  margin: 40px auto;
+  max-width: 440px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 20px 40px #666;
+}
+
+main form button {
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid white;
+  background: green;
+  color:white;
+  font-size: larger;
+  margin-top: 20px;
+}

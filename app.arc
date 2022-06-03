@@ -4,6 +4,9 @@ indieweb
 @plugins
 payload-format
 
+@static
+fingerprint true
+
 @http
 get /
 get /login # hardcoded admin for now; could be github oauth or whatever
@@ -14,7 +17,7 @@ get /auth # indieauth authentication endpoint
 post /approve # indieauth approval flow
 get /token # indieauth token endpoint
 get /microsub # indieweb microsub endpoint
-any /* 
+any /* # catch all for 404
 
 @tables
 posts
