@@ -1,6 +1,6 @@
 import layout from './layout.mjs'
 
-export default function renderauth ({ website, scopes, meta }) {
+export default function renderauth ({ website, scopes, meta, state, redirect_uri }) {
   
   let logo = meta.logo? `<img src=${meta.logo}>` : ''
 
@@ -18,6 +18,8 @@ export default function renderauth ({ website, scopes, meta }) {
       <h1>Authorize ${meta.name || website} to use your account?</h1>
     </header>
     <form class=card-auth action=/approve method=post>
+      <input type=hidden name=redirect_uri value=${ redirect_uri }>
+      <input type=hidden name=state value=${ state }>
       ${ scope }
       <button> ✅ Authorize</button>
     </form>

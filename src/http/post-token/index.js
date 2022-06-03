@@ -29,7 +29,7 @@ exports.handler = async function http () {
           Get started by editing this file at:
         </p>
         <code>
-          src/http/get-token/index.js
+          src/http/post-token/index.js
         </code>
       </div>
       <div>

@@ -9,6 +9,7 @@
     "@architect/sandbox": "^5.2.5",
     "eslint": "^8.16.0",
     "microformats-parser": "^1.4.1",
+    "nanoid": "^3.3.4",
     "tiny-json-http": "^7.4.2"
   },
   "eslintConfig": {

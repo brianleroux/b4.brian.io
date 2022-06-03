@@ -2,3 +2,4 @@ node_modules/
 sam.json
 sam.yaml
 preferences.arc
+public/static.json

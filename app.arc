@@ -15,13 +15,15 @@ post /logout # nuke the sesh
 get /meta # indieauth-metadata endpoint
 get /auth # indieauth authentication endpoint
 post /approve # indieauth approval flow
-get /token # indieauth token endpoint
+post /token # https://indieauth.spec.indieweb.org/#request
+post /auth # https://indieauth.spec.indieweb.org/#request
 get /microsub # indieweb microsub endpoint
 any /* # catch all for 404
 
 @tables
-posts
-  postID *String
+codes
+  code *String
+  ttl TTL
 
 @aws
 profile personal
