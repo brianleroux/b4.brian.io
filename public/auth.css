@@ -31,3 +31,7 @@ main form button {
   font-size: larger;
   margin-top: 20px;
 }
+
+footer {
+  display:none;
+}

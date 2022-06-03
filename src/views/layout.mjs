@@ -29,6 +29,17 @@ return `<!DOCTYPE html>
   <a href="https://wtfjs.com">⁉ wtfjs</a>
 </nav>
 <main>${ body }</main>
+<footer class="h-card">
+  <span class="p-name">Brian LeRoux</span>
+  <span class="p-given-name">Brian</span>
+  <span class="p-family-name">LeRoux</span>
+  <div class="p-org">Begin</div>
+  <img class="u-photo" src="${ arc.static('/profile.jpg') }">
+  <a class="u-url" href="https://${ process.env.DOMAIN }">${ process.env.DOMAIN }</a>
+  <a class="u-email" href="mailto:b@brian.io">b@brian.io</a>
+  <abbr class="p-region" title="BC">BC</abbr>,
+  <div class="p-country-name">Canada</div>
+</footer>
 </body>
 </html>
 `
