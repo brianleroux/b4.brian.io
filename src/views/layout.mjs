@@ -30,7 +30,7 @@ return `<!DOCTYPE html>
 <main>
   <nav>
     <header class="h-card card">
-      <h1><a class="u-url u-uid" rel=me href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a></h1>
+      <h1><a class="u-url u-uid" rel=me href=/>${ process.env.DOMAIN }</a></h1>
       <img class=u-photo src=${ arc.static('/profile.jpg') }>
       <p class=p-name>${ process.env.NAME }</p>
       <a class=u-email href=mailto:${ process.env.EMAIL }>✉️ ${ process.env.EMAIL }</a>

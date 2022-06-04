@@ -9,6 +9,7 @@ fingerprint true
 
 @http
 get /
+get /notes/:entryID
 get /admin # control plane for db.. could also add env vars?
 post /entries # our own easier form post for creating entries
 post /login # uses env var for password

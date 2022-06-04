@@ -2,7 +2,7 @@ import layout from './layout.mjs'
 import render from './_note.mjs'
 
 export default function admin ({ notes }) {
-
+  let edit = n => { n.edit = true; return n }
   let html = `
   <section class=card>
     <h2>Welcome back!</h2>
@@ -20,7 +20,9 @@ export default function admin ({ notes }) {
   </section>
   <section class=card>
     <h2>Notes</h2>
-    ${ notes.map(render).join('') }
+    ${ 
+      notes.map(edit).map(render).join('') 
+    }
   </section>
   `
 

@@ -9,6 +9,8 @@ module.exports = {
       if (!arc) console.log('missing arc')
       let base = cloudformation.Resources.HTTP.Properties.DefinitionBody.paths['/']
       base.get['x-amazon-apigateway-integration'].payloadFormatVersion = '1.0'
+      let base2 = cloudformation.Resources.HTTP.Properties.DefinitionBody.paths['/notes/{entryID}']
+      base2.get['x-amazon-apigateway-integration'].payloadFormatVersion = '1.0'
       return cloudformation
     }
   }

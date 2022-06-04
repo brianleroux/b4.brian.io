@@ -8,7 +8,7 @@ export default function renderauth ({ website, scopes, meta, state, redirect_uri
   if (scopes?.length > 0) {
     scope += `This application will be able to:`
     for (let s of scopes) {
-      msg += `<li><label for=${s}>${s}</label> <input type=checkbox value=${s}>`
+      scope += `<li><label for=${s}>${s}</label> <input type=checkbox value=${s}>`
     }
   }
 

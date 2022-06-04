@@ -1,15 +1,10 @@
+/** resets */
+
 * { 
   margin: 0; 
   padding: 0; 
   box-sizing: border-box; 
 } 
-
-body { 
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
-  background: #262d37;
-  display: flex;
-  flex-direction: column;
-}
 
 a {
   color:#7e8188;
@@ -26,6 +21,57 @@ h1, h2, .card h1 a {
   margin: 10px;
   font-size: 1.5em;
 }
+
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  background: #3b424c;
+  padding: 10px;
+  color: rgb(255, 255, 255, 0.8);
+  font-size: x-large;
+  border: 1px inset #3b424c;
+  border-radius: 10px;
+  margin: 0 0 5px 0;
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+  font-size:small;
+  color:lightgrey;
+  background:#262d37;
+  border: 1px solid #000;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/** layout */
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+  background: #262d37;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 800px;
+  margin: 20px auto;
+  display: flex;
+  gap: 20px;
+}
+
+/** left col */
+main nav {
+  
+}
+
+/** right col */
+main section.content {}
+
+/** elements */
 
 .content .card h2 {
   text-align:left;  
@@ -47,21 +93,6 @@ h1, h2, .card h1 a {
   font-size: normal;
   color: rgb(255,255,255, 0.7);
 }
-
-/** left col */
-main {
-  width: 800px;
-  margin: 20px auto;
-  display: flex;
-  gap: 20px;
-}
-
-main nav {
-  
-}
-
-/** right col */
-main section.content {}
 
 .hero-container {
   box-shadow: inset 0 0 10px #000000;
@@ -99,31 +130,6 @@ main section.content {}
   margin: 0 0 5px;
 }
 
-input[type=text], input[type=password], textarea {
-  width: 100%;
-  background: #3b424c;
-  padding: 10px;
-  color: rgb(255, 255, 255, 0.8);
-  font-size: x-large;
-  border: 1px inset #3b424c;
-  border-radius: 10px;
-  margin: 0 0 5px 0;
-}
-
-textarea {
-  height: 300px;
-}
-
-button {
-  font-size:small;
-  color:lightgrey;
-  background:#262d37;
-  border: 1px solid #000;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 10px;
-}
-
 .card a:last-child {
   margin: 0 0 20px;
 }
@@ -133,6 +139,8 @@ button {
   width: 50%;
   border: 3px solid #3b424c;
 }
+
+/** h-entry */
 
 article {
   border-radius: 5px;
