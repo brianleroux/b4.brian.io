@@ -10,6 +10,7 @@ fingerprint true
 @http
 get /
 get /admin # control plane for db.. could also add env vars?
+post /entries # our own easier form post for creating entries
 post /login # uses env var for password
 post /logout # nuke the sesh
 
@@ -19,6 +20,7 @@ post /approve # indieauth approval flow
 post /token # https://indieauth.spec.indieweb.org/#request
 post /auth # https://indieauth.spec.indieweb.org/#request
 get /microsub # indieweb microsub endpoint
+# https://micropub.spec.indieweb.org
 
 any /* # catch all for 404
 

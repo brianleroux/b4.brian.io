@@ -6,13 +6,13 @@ async function login (req) {
   if (!process.env.PASSWORD) {
     return {
       session: {},
-      location: '/login?login_fail_password_undefined'
+      location: '/admin?login_fail_password_undefined'
     }
   }
   else if (req.body?.password !== process.env.PASSWORD) {
     return {
       session: {},
-      location: '/login?login_fail'
+      location: '/admin?login_fail'
     }
   }
   else {
@@ -20,7 +20,7 @@ async function login (req) {
       session: { 
         loggedIn: true 
       },
-      location: '/login'
+      location: '/admin'
     }
   }
 }

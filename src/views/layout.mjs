@@ -2,7 +2,7 @@ import arc from '@architect/functions'
 
 export default function layout({ body='', page='index' }) {
   let domain = process.env.ARC_ENV === 'testing'? 'localhost:3333' : process.env.DOMAIN
-  let css = page === 'auth'? '/auth.css' : '/index.css'
+  let css = '/index.css'
 return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +14,12 @@ return `<!DOCTYPE html>
   <link rel="microsub" href="https://${domain}/microsub">
   <title>brian.io</title>
   <link rel="stylesheet" href="${ arc.static(css) }">
+  <style>
+  /** https://unsplash.com/photos/i0K3-IHiXYI */
+  .hero {
+    background-image: url("${ arc.static('/hero.jpg') }");
+  }
+  </style>
 </head>
 <body>
 
@@ -24,9 +30,9 @@ return `<!DOCTYPE html>
 <main>
   <nav>
     <header class="h-card card">
-      <h1 class=p-name>${ process.env.NAME }</h1>
+      <h1><a class="u-url u-uid" rel=me href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a></h1>
       <img class=u-photo src=${ arc.static('/profile.jpg') }>
-      <a class="u-url u-uid" rel=me href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a>
+      <p class=p-name>${ process.env.NAME }</p>
       <a class=u-email href=mailto:${ process.env.EMAIL }>✉️ ${ process.env.EMAIL }</a>
     </header>
     <section class="card">

@@ -5,6 +5,6 @@ export let handler = arc.http.async(logout)
 async function logout () {
   return {
     session: {},
-    location: '/login'
+    location: '/admin'
   }
 }

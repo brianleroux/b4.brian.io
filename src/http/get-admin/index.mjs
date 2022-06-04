@@ -1,10 +1,22 @@
 import arc from '@architect/functions'
-import render from '@architect/views/admin.mjs'
+import login from '@architect/views/login.mjs'
+import admin from '@architect/views/admin.mjs'
+import notes from '@architect/shared/notes.mjs'
 
-export let handler = arc.http.async(admin)
+export let handler = arc.http.async(render)
 
-async function admin (req) {
-  return {
-    html: render(req.session || {})
+async function render (req) {
+  if (req.session.loggedIn) {
+    let data = await notes() 
+    return {
+      html: admin({ notes: data })
+    }
+  }
+  else {
+    return {
+      html: login()
+    }
   }
 }
+
+

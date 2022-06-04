@@ -20,10 +20,32 @@ a:hover {
   text-decoration:underline;
 }
 
-h1, h2 {
+h1, h2, .card h1 a {
   color: rgb(255,255,255, 0.7);
   text-shadow: 3px 3px 20px rgb(0,33,33,0.3);
   margin: 10px;
+  font-size: 1.5em;
+}
+
+.content .card h2 {
+  text-align:left;  
+}
+
+.content .card form {
+  overflow: hidden;
+}
+.content .card form button {
+  float:right;
+}
+
+.card h1 a {
+  font-size: 1.7em;
+}
+
+.p-name {
+  margin: 5px;
+  font-size: normal;
+  color: rgb(255,255,255, 0.7);
 }
 
 /** left col */
@@ -54,8 +76,6 @@ main section.content {}
 .hero {
   width:100%;
   height:100%;
-  /** https://unsplash.com/photos/i0K3-IHiXYI */
-  background-image: url('/_static/hero.jpg');
   background-size: 100% 500px;
   background-repeat: no-repeat;
   background-position: center center; 
@@ -70,12 +90,38 @@ main section.content {}
   box-shadow: 3px 3px 20px rgb(0,33,33,0.3);
   margin: 0 0 10px 0;
   padding: 10px;
+  color: rgb(255, 255, 255, 0.5);
 }
 
 .card a { 
   display:block;
   font-size: small;
   margin: 0 0 5px;
+}
+
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  background: #3b424c;
+  padding: 10px;
+  color: rgb(255, 255, 255, 0.8);
+  font-size: x-large;
+  border: 1px inset #3b424c;
+  border-radius: 10px;
+  margin: 0 0 5px 0;
+}
+
+textarea {
+  height: 300px;
+}
+
+button {
+  font-size:small;
+  color:lightgrey;
+  background:#262d37;
+  border: 1px solid #000;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .card a:last-child {
@@ -86,4 +132,41 @@ main section.content {}
   border-radius: 50%;
   width: 50%;
   border: 3px solid #3b424c;
+}
+
+article {
+  border-radius: 5px;
+  background: #3b424c;
+  margin: 0 0 5px 0;
+  overflow: hidden; 
+  position: relative;
+  font-size: 1.2em;
+}
+
+article .p-author {
+  display: none;
+}
+
+article h2 {
+  text-align: left;
+  padding-left: 5px;
+  font-size: 0.7em;
+}
+
+article .e-content {
+  text-align: left;
+  margin-top: 15px;
+  padding: 10px 10px 10px 10px;
+}
+
+article a { 
+  padding: 5px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+article a time {
+  font-size:0.7em;
 }
