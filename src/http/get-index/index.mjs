@@ -1,7 +1,10 @@
-import layout from '@architect/views/old.mjs'
+import arc from '@architect/functions'
+import render from '@architect/views/index.mjs'
 
 /** note; we are using a plugin for multiValueheaders */
 export async function handler (req) {
+  let data = await arc.tables()
+  let notes = await data.entries.scan({})
   let meta = `<https://${process.env.DOMAIN}/meta>; rel="indieauth-metadata"`
   let auth = `<https://${process.env.DOMAIN}/auth>; rel="authorization_endpoint"`
   let token = `<https://${process.env.DOMAIN}/token>; rel="token_endpoint"`
@@ -14,6 +17,6 @@ export async function handler (req) {
     multiValueHeaders: {
       'Link': [meta, auth, token]
     },
-    body: layout()
+    body: render({ notes })
   }
 }

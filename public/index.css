@@ -1,21 +1,89 @@
-     * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; } .max-width-320 { max-width: 20rem; } .margin-left-8 { margin-left: 0.5rem; } .margin-bottom-16 { margin-bottom: 1rem; } .margin-bottom-8 { margin-bottom: 0.5rem; } .padding-32 { padding: 2rem; } .color-grey { color: #333; } .color-black-link:hover { color: black; } 
-nav {
-  margin: 15% auto 0 auto;
-  width: 200px;
-  list-style: none;
-  text-align: center;
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+} 
+
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+  background: #262d37;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
-  display: block;
-  text-decoration: none;
+  color:#7e8188;
+  text-decoration:none;
 }
 
-p {
-  margin: 20px 0 0 0;
-  font-style: oblique;
+a:hover {
+  text-decoration:underline;
 }
 
-footer {
-  display:none;
+h1, h2 {
+  color: rgb(255,255,255, 0.7);
+  text-shadow: 3px 3px 20px rgb(0,33,33,0.3);
+  margin: 10px;
+}
+
+/** left col */
+main {
+  width: 800px;
+  margin: 20px auto;
+  display: flex;
+  gap: 20px;
+}
+
+main nav {
+  
+}
+
+/** right col */
+main section.content {}
+
+.hero-container {
+  box-shadow: inset 0 0 10px #000000;
+  background:#000;
+  z-index: -1;
+  height: 340px;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.hero {
+  width:100%;
+  height:100%;
+  /** https://unsplash.com/photos/i0K3-IHiXYI */
+  background-image: url('/_static/hero.jpg');
+  background-size: 100% 500px;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}
+
+.card {
+  border-radius: 10px;
+  max-width: 340px;
+  min-width: 340px;
+  text-align: center;
+  background: #303741;
+  box-shadow: 3px 3px 20px rgb(0,33,33,0.3);
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+.card a { 
+  display:block;
+  font-size: small;
+  margin: 0 0 5px;
+}
+
+.card a:last-child {
+  margin: 0 0 20px;
+}
+
+.card img.u-photo {
+  border-radius: 50%;
+  width: 50%;
+  border: 3px solid #3b424c;
 }

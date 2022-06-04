@@ -16,25 +16,37 @@ return `<!DOCTYPE html>
   <link rel="stylesheet" href="${ arc.static(css) }">
 </head>
 <body>
-<nav>
-  <p>@brianleroux</p>
-  <a href="https://github.com/brianleroux" rel="me">🐙 gh</a>
-  <a href="https://www.npmjs.com/~brianleroux" rel="me">🐴 npm</a>
-  <a href="https://twitter.com/brianleroux" rel="me">🐦 twtr</a>
-  <p>Work</p>
-  <a href="https://begin.com">☀ begin</a>
-  <p>Projects</p>
-  <a href="https://arc.codes">🆕 arc.codes</a>
-  <a href="https://cordova.apache.org">📲 cordova</a>
-  <a href="https://wtfjs.com">⁉ wtfjs</a>
-</nav>
-<main>${ body }</main>
-<footer class="h-card">
-  <span class="p-name">${ process.env.NAME }</span>
-  <img class="u-photo" src="${ arc.static('/profile.jpg') }">
-  <a class="u-url" rel="me" href="https://${ process.env.DOMAIN }">${ process.env.DOMAIN }</a>
-  <a class="u-email" href="mailto:${ process.env.EMAIL }">${ process.env.EMAIL }</a>
-</footer>
+
+<div class=hero-container>
+  <div class=hero>&nbsp;</div>
+</div>
+
+<main>
+  <nav>
+    <header class="h-card card">
+      <h1 class=p-name>${ process.env.NAME }</h1>
+      <img class=u-photo src=${ arc.static('/profile.jpg') }>
+      <a class="u-url u-uid" rel=me href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a>
+      <a class=u-email href=mailto:${ process.env.EMAIL }>✉️ ${ process.env.EMAIL }</a>
+    </header>
+    <section class="card">
+      <h2>Elsewhere</h2>
+      <a href=https://github.com/brianleroux rel=me>🐙 gh</a>
+      <a href=https://www.npmjs.com/~brianleroux rel=me>🐴 npm</a>
+      <a href=https://twitter.com/brianleroux rel=me>🐦 twtr</a>
+      <a href=https://begin.com>☀ begin</a>
+    </section>
+    <section class="card">
+      <h2>Projects</h2>
+      <a href="https://arc.codes">🆕 fwa.dev</a>
+      <a href="https://arc.codes">🔥 arc.codes</a>
+      <a href="https://cordova.apache.org">📲 cordova</a>
+      <a href="https://wtfjs.com">⁉ wtfjs</a>
+    </section>
+  </nav>
+  <section class=content>${ body }</section>
+</main>
+
 </body>
 </html>
 `
