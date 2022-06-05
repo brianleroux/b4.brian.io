@@ -7,11 +7,19 @@ payload-format
 @static
 fingerprint true
 
+@events
+webmention-sending-created
+webmention-sending-updated
+webmention-sending-deleted
+
 @http
 get /
-get /notes/:entryID
 get /admin # control plane for db.. could also add env vars?
-post /entries # our own easier form post for creating entries
+get /notes/:entryID # note cannonical url
+get /notes/:entryID/destroy # note destroy confirmation 
+post /notes # create note
+post /notes/:entryID # update note
+post /notes/:entryID/destroy # destroy note
 post /login # uses env var for password
 post /logout # nuke the sesh
 
@@ -31,7 +39,7 @@ codes
   ttl TTL
 
 entries
-  entryID *String #2022-07-27-my-title-here
+  entryID *String #note-2022-07-27
   ttl TTL
   # content string
   # ts number

@@ -8,6 +8,9 @@ export let handler = arc.http.async(render)
 async function render (req) {
   if (req.session.loggedIn) {
     let data = await notes() 
+    if (req.query.json) {
+      return { json: data }
+    }
     return {
       html: admin({ notes: data })
     }

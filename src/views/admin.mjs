@@ -1,5 +1,6 @@
 import layout from './layout.mjs'
 import render from './_note.mjs'
+import form from './_note-form.mjs'
 
 export default function admin ({ notes }) {
   let edit = n => { n.edit = true; return n }
@@ -12,11 +13,7 @@ export default function admin ({ notes }) {
   </section>
   <section class=card>
     <h2>New note</h2>
-    <form action=/entries method=post>
-      <input type=text name=name placeholder="name (optional)">
-      <textarea name=content placeholder="entry content" required></textarea>
-      <button>💾 Save new post</button>
-    </form>
+    ${ form({}) } 
   </section>
   <section class=card>
     <h2>Notes</h2>

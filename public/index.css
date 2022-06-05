@@ -45,6 +45,7 @@ button {
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
+  float: right;
 }
 
 /** layout */
@@ -79,9 +80,6 @@ main section.content {}
 
 .content .card form {
   overflow: hidden;
-}
-.content .card form button {
-  float:right;
 }
 
 .card h1 a {
@@ -167,14 +165,26 @@ article .e-content {
   padding: 10px 10px 10px 10px;
 }
 
-article a { 
-  padding: 5px;
-  display: block;
+article nav {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 0;  
+  display: flex;
+  flex-basis:  fit-content;
+  gap: 7px;
+  height: 1.3em;
+  margin: 0 7px;
 }
 
-article a time {
-  font-size:0.7em;
+form.note-destroy p {
+  display:flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.note-destroy > p > a:nth-child(3) {
+  margin: 0;
+  font-size: 1em;
 }
