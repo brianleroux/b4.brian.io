@@ -1,9 +1,9 @@
+import { list } from '@architect/shared/notes.mjs'
 import render from '@architect/views/index.mjs'
-import notes from '@architect/shared/notes.mjs'
 
 /** note; we are using a plugin for multiValueheaders */
 export async function handler (req) {
-  let data = await notes()
+  let data = await list()
   let meta = `<https://${process.env.DOMAIN}/meta>; rel="indieauth-metadata"`
   let auth = `<https://${process.env.DOMAIN}/auth>; rel="authorization_endpoint"`
   let token = `<https://${process.env.DOMAIN}/token>; rel="token_endpoint"`
@@ -16,6 +16,6 @@ export async function handler (req) {
     multiValueHeaders: {
       'Link': [meta, auth, token]
     },
-    body: render({ notes: data })
+    body: render(data)
   }
 }

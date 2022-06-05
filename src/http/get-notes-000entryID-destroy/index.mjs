@@ -1,7 +1,8 @@
 import arc from '@architect/functions'
 import layout from '@architect/views/layout.mjs'
-import { notFound } from '@architect/views/errors.mjs'
+import { notFound, gone } from '@architect/views/errors.mjs'
 import { friendly, fmt } from '@architect/views/_fmt-date.mjs'
+import { read } from '@architect/shared/notes.mjs'
 
 export let handler = arc.http.async(fn)
 
@@ -19,12 +20,19 @@ async function fn (req) {
   }
 
   // read the note
-  let data = await arc.tables()
-  let note = await data.entries.get({ entryID })
+  let note = await read({ entryID })
   if (!note) {
     return {
       code: 404,
       html: notFound(entryID)
+    }
+  }
+
+  // support webmention deleted
+  if (note.state === 'deleted') {
+    return {
+      code: 410, // Gone
+      html: gone(entryID)
     }
   }
 

@@ -8,9 +8,7 @@ payload-format
 fingerprint true
 
 @events
-webmention-sending-created
-webmention-sending-updated
-webmention-sending-deleted
+webmention-send
 
 @http
 get /
@@ -39,10 +37,11 @@ codes
   ttl TTL
 
 entries
-  entryID *String #note-2022-07-27
+  pk *String #note-2022-07-27
+  sk **String #note-2022-07-27 #reply-2022-08-01
   ttl TTL
   # content string
-  # ts number
+  # state string, one of published, deleted
 
 @aws
 profile personal

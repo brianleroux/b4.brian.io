@@ -1,26 +1,29 @@
 import arc from '@architect/functions'
+import { admin } from '@architect/shared/middleware.mjs'
+import { create } from '@architect/shared/notes.mjs'
 
-export let handler = arc.http.async(fn)
+export let handler = arc.http.async(admin, createNote)
 
-async function fn (req) {
+async function createNote (req) {
 
   // required properties
-  let params = {
+  let note = {
     entryID: new Date(Date.now()).toISOString(),
-    content: req.body.content
+    content: req.body.content,
+    state: 'published', // published, deleted 
   }
 
   // optional properties
-  if (req.body.ttl) params.ttl = req.body.ttl
-  if (req.body.name) params.name = req.body.name
-
-  // grab a data client
-  let data = await arc.tables()
+  if (req.body.ttl) note.ttl = req.body.ttl
+  if (req.body.name) note.name = req.body.name
 
   // write to dynamo and shoot off webmention-sender async event
   await Promise.all([
-    data.entries.put(params),
-    arc.events.publish({ name: 'webmention-sending-created', payload: params }),
+    create(note),
+    arc.events.publish({ 
+      name: 'webmention-send', 
+      payload: note
+    })
   ])
 
   return {

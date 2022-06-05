@@ -167,7 +167,7 @@ article .e-content {
 
 article nav {
   position: absolute;
-  top: 0;
+  top: 5px;
   right: 0;  
   display: flex;
   flex-basis:  fit-content;

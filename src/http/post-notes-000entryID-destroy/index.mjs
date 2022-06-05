@@ -1,21 +1,14 @@
 import arc from '@architect/functions'
+import { admin } from '@architect/shared/middleware.mjs'
+import { read, destroy } from '@architect/shared/notes.mjs'
 
-export let handler = arc.http.async(fn)
+export let handler = arc.http.async(admin, destroyNote)
 
-async function fn (req) {
+async function destroyNote (req) {
 
-  // check for loggedIn
-  let loggedIn = !!req.session.loggedIn 
-  if (!loggedIn) {
-    return {
-      location: '/admin'
-    }
-  }
- 
   // find the note in question
   let entryID = req.params.entryID
-  let data = await arc.tables()
-  let note = await data.entries.get({ entryID })
+  let note = await read({ entryID })
   if (!note) {
     return {
       location: '/admin'
@@ -24,13 +17,11 @@ async function fn (req) {
 
   // write to dynamo and shoot off webmention-sender async event
   await Promise.all([
-    data.entries.delete({ 
-      entryID 
-    }),
+    destroy(note),
     arc.events.publish({ 
-      name: 'webmention-sending-deleted', 
-      payload: note
-    }),
+      name: 'webmention-send', 
+      payload: note,
+    })
   ])
 
   return {

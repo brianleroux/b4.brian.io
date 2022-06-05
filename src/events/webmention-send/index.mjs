@@ -1,9 +1,9 @@
-import { events } from '@architect/functions'
-import { get, post } from 'tiny-json-http'
+import arc from '@architect/functions'
+import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
 import { mf2 } from 'microformats-parser'
 
-export let handler = events.subscribe(sender)
+export let handler = arc.events.subscribe(sender)
 
 async function sender ({ entryID, content, ttl, name }) {
 
@@ -17,7 +17,7 @@ async function sender ({ entryID, content, ttl, name }) {
     try {
 
       // attempt to discover the webmention endpoint
-      let { body } = await get({ url: href })
+      let { body } = await tiny.get({ url: href })
 
       // if not found look for html <link>
       let parsed = mf2(body, { baseUrl: href })
@@ -26,7 +26,7 @@ async function sender ({ entryID, content, ttl, name }) {
       if (rels.webmention && Array.isArray(rels.webmention) && rels.webmention[0]) {
 
         // post mention if it exists
-        await post({
+        await tiny.post({
           url: rels.webmention[0],
           headers: {
             'content-type': 'application/x-www-form-urlencoded'

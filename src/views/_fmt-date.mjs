@@ -9,7 +9,7 @@
 // - "Fri, 22 May 2020 @ 10:00 PST"
 //
 export function friendly(iso8601_date_string) {
-
+  iso8601_date_string = iso8601_date_string.replace('note-', '')
   // Renders a date in the local timezone, including day of the week.
   // e.g. "Fri, 22 May 2020"
   const dateFormatter = new Intl.DateTimeFormat(
@@ -49,6 +49,7 @@ export function friendly(iso8601_date_string) {
 // - "20 minutes ago"
 //
 export function fmt (iso8601_date_string) {
+  iso8601_date_string = iso8601_date_string.replace('note-', '')
   const date = new Date(Date.parse(iso8601_date_string));
   const now = new Date();
 

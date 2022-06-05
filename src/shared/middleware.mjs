@@ -6,3 +6,12 @@ export async function auth (req) {
     }
   }
 }
+
+export async function admin (req) {
+  let loggedIn = !!req.session.loggedIn 
+  if (!loggedIn) {
+    return {
+      location: '/admin'
+    }
+  }
+}

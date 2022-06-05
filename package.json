@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "sandbox",
+    "test": "node tests/notes-test.mjs | tap-spec",
     "lint": "eslint src --fix"
   },
   "dependencies": {
@@ -11,6 +12,8 @@
     "get-hrefs": "^4.0.0",
     "microformats-parser": "^1.4.1",
     "nanoid": "^3.3.4",
+    "tap-spec": "^5.0.0",
+    "tape": "^5.5.3",
     "tiny-json-http": "^7.4.2"
   },
   "eslintConfig": {
