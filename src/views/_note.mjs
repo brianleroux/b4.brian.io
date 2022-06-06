@@ -27,7 +27,7 @@ export default function renderNote ({ entryID, name, content, edit=false }) {
 function navbar({ entryID, edit=false }) {
   if (edit) {
     return `<nav>
-      <a class=u-url href="/notes/${ entryID }"><time class=dt-published title="${ friendly(entryID) }" datetime="${ entryID }">${ fmt(entryID) } &nbsp;🕓</time></a>
+      <a class=u-url href="/notes/${ entryID }"><time class=dt-published title="${ friendly(entryID) }" datetime="${ entryID.replace('note-', '') }">${ fmt(entryID) } &nbsp;🕓</time></a>
       <a href="/notes/${ entryID }/destroy">☠️</a>
     </nav>`
   }

@@ -8,6 +8,9 @@
 // - "yesterday @ 11:00 CST"
 // - "Fri, 22 May 2020 @ 10:00 PST"
 //
+// d.toLocaleString("en-US", {
+//   timeZone: "America/Los_Angeles"
+// })
 export function friendly(iso8601_date_string) {
   iso8601_date_string = iso8601_date_string.replace('note-', '')
   // Renders a date in the local timezone, including day of the week.
@@ -32,11 +35,17 @@ export function friendly(iso8601_date_string) {
   // for example, if the UTC date and the localised date fall on either side
   // of midnight.
   if (dateFormatter.format(date) == dateFormatter.format(today)) {
-    return "today @ " + timeFormatter.format(date);
+    return "today @ " + date.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles"
+    }) // timeFormatter.format(date);
   } else if (dateFormatter.format(date) == dateFormatter.format(yesterday)) {
-    return "yesterday @ " + timeFormatter.format(date);
+    return "yesterday @ " + date.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles"
+    }) // timeFormatter.format(date);
   } else {
-    return dateFormatter.format(date) + " @ " + timeFormatter.format(date);
+    return dateFormatter.format(date) + " @ " + date.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles"
+    }) // timeFormatter.format(date);
   }
 }
 
@@ -71,6 +80,6 @@ export function fmt (iso8601_date_string) {
   } else if (deltaHours < 6) {
     return deltaHours + " hours ago";
   } else {
-    return friendly(iso8601_date_string)
+    return ""
   }
 }
