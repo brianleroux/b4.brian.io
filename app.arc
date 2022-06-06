@@ -27,8 +27,6 @@ get /auth # indieauth consent screen
 post /approve # indieauth approval flow
 post /token # https://indieauth.spec.indieweb.org/#request
 post /auth # https://indieauth.spec.indieweb.org/#request
-get /microsub # indieweb microsub endpoint
-# https://micropub.spec.indieweb.org
 
 any /* # catch all for 404
 
@@ -38,11 +36,11 @@ codes
   ttl TTL
 
 entries
-  pk *String #note-2022-07-27
-  sk **String #note-2022-07-27 #reply-2022-08-01
+  pk *String # ex: note-2022
+  sk **String # ex: note-2022-07-27 or reply-2022-08-01
   ttl TTL
   # content string
-  # state string, one of published, deleted
+  # state string: published or deleted
 
 @aws
 profile personal

@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
-import { mf2 } from 'microformats-parser'
+import getWebmentionEndpoint from './_get-webmention-endpoint'
 
 export let handler = arc.events.subscribe(sender)
 
@@ -17,17 +17,12 @@ async function sender ({ entryID, content, ttl, name }) {
     try {
 
       // attempt to discover the webmention endpoint
-      let { body } = await tiny.get({ url: href })
-
-      // if not found look for html <link>
-      let { rels } = mf2(body, { baseUrl: href })
-
-      // look for rels.webmention
-      if (rels.webmention && Array.isArray(rels.webmention) && rels.webmention[0]) {
+      let url = await getWebmentionEndpoint(href)
+      if (url) {
 
         // post mention if it exists
         await tiny.post({
-          url: rels.webmention[0],
+          url,
           headers: {
             'content-type': 'application/x-www-form-urlencoded'
           },
@@ -36,6 +31,10 @@ async function sender ({ entryID, content, ttl, name }) {
             target: href
           }
         }) 
+      }
+      else {
+        // log not found for debugging
+        console.log(`webmention endpoint not found for ${ href }`) 
       }
     }
     catch (e) {

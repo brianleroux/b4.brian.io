@@ -11,7 +11,6 @@ return `<!DOCTYPE html>
   <link rel="indieauth-metadata" href="https://${domain}/meta">
   <link rel="authorization_endpoint" href="https://${domain}/auth">
   <link rel="token_endpoint" href="https://${domain}/token">
-  <link rel="microsub" href="https://${domain}/microsub">
   <title>brian.io</title>
   <link rel="stylesheet" href="${ arc.static(css) }">
   <style>

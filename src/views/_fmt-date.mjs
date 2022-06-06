@@ -71,6 +71,6 @@ export function fmt (iso8601_date_string) {
   } else if (deltaHours < 6) {
     return deltaHours + " hours ago";
   } else {
-    return "";
+    return friendly(iso8601_date_string)
   }
 }

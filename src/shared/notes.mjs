@@ -69,7 +69,7 @@ export async function update ({ entryID, state, content, context }) {
       pk: `note-${ entryID.substr(0, 4) }`, 
       sk : `note-${ entryID }`
     },
-    UpdateExpression: `set ${updates.join(',)}`,
+    UpdateExpression: `set ${updates.join(',')}`,
     ExpressionAttributeNames,
     ExpressionAttributeValues,
   })
