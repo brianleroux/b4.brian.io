@@ -13,6 +13,10 @@ async function valid (req) {
     errors.push('missing_target')
   if (!source)
     errors.push('missing_source')
+  if (target?.startsWith('http') === false)
+    errors.push('invalid_target')
+  if (source?.startsWith('http') === false)
+    errors.push('invalid_source')
   if (target === source)
     errors.push('invalid: source must not match target')
   if (errors.length > 0) {
