@@ -1,7 +1,7 @@
 
 export default function noteForm (note) {
   return `
-  <form action=/notes/${note.entryID? note.entryID : ''} method=post>
+  <form action=/notes${note.entryID? '/' + note.entryID : ''} method=post>
     <input type=text 
       style=display:none;
       name=name 

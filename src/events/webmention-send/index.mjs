@@ -20,7 +20,7 @@ async function sender ({ entryID, content, ttl, name }) {
       let { body } = await tiny.get({ url: href })
 
       // if not found look for html <link>
-      let parsed = mf2(body, { baseUrl: href })
+      let { rels } = mf2(body, { baseUrl: href })
 
       // look for rels.webmention
       if (rels.webmention && Array.isArray(rels.webmention) && rels.webmention[0]) {
