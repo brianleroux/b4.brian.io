@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
-import getWebmentionEndpoint from './_get-webmention-endpoint'
+import getWebmentionEndpoint from './_get-webmention-endpoint.mjs'
 
 export let handler = arc.events.subscribe(sender)
 

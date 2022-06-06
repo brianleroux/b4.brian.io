@@ -7,19 +7,18 @@ export let handler = arc.http.async(admin, createNote)
 async function createNote (req) {
 
   // required properties
-  let note = {
-    entryID: new Date(Date.now()).toISOString(),
+  let params = {
     content: req.body.content,
-    state: 'published', // published, deleted 
   }
 
   // optional properties
-  if (req.body.ttl) note.ttl = req.body.ttl
-  if (req.body.name) note.name = req.body.name
+  if (req.body.ttl) params.ttl = req.body.ttl
+  if (req.body.name) params.name = req.body.name
+
+  let note = await create(params)
 
   // write to dynamo and shoot off webmention-sender async event
   await Promise.all([
-    create(note),
     arc.events.publish({ 
       name: 'webmention-send', 
       payload: note

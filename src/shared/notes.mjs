@@ -66,15 +66,17 @@ export async function update ({ entryID, state, content, context }) {
     ExpressionAttributeValues[':context'] = context
   }
   let data = await arc.tables()
-  let note = await data.entries.update({
+  let params = {
     Key: { 
-      pk: `note-${ entryID.substr(0, 4) }`, 
-      sk : `note-${ entryID }`
+      pk: entryID.substr(0, 9), 
+      sk : entryID
     },
     UpdateExpression: `set ${updates.join(',')}`,
     ExpressionAttributeNames,
     ExpressionAttributeValues,
-  })
+  }
+  let note = await data.entries.update(params)
+  console.log('updated note', note, params)
   return fmt(note)
 }
 
