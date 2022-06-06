@@ -23,7 +23,11 @@ async function createNote (req) {
     arc.events.publish({ 
       name: 'webmention-send', 
       payload: note
-    })
+    }),
+    arc.events.publish({ 
+      name: 'populate-in-reply-to', 
+      payload: note
+    }),
   ])
 
   return {

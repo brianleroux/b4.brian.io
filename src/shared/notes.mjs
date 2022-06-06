@@ -1,5 +1,13 @@
 import arc from '@architect/functions'
 
+/** formatting helper */
+function fmt (note) {
+  note.entryID = note.sk
+  delete note.pk
+  delete note.sk
+  return note
+}
+
 /**
  * store years supported in db
  *
@@ -12,8 +20,6 @@ import arc from '@architect/functions'
  *
  * list can then get all the notes for a given year; query years supported to get total years
  */
-
-
 
 /**
  * writes
@@ -38,24 +44,36 @@ export async function create ({ content }) {
 }
 
 // @returns { entryID, state, content }
-export async function update ({ entryID, state, content }) {
+export async function update ({ entryID, state, content, context }) {
   if (!entryID)
     throw Error('missing_entryID')
-  if (!content || content.length === '') 
-    throw Error('missing_content')
+  let updates = []
+  if (state) {
+    updates.push('#state = :state')
+    ExpressionAttributeNames['#state'] = 'state'
+    ExpressionAttributeValues[':state'] = state
+  }
+  if (content) {
+    updates.push('#content = :content')
+    ExpressionAttributeNames['#content'] = 'content'
+    ExpressionAttributeValues[':content'] = content
+  }
+  if (context) {
+    updates.push('#context = :context')
+    ExpressionAttributeNames['#context'] = 'context'
+    ExpressionAttributeValues[':context'] = context
+  }
   let data = await arc.tables()
-  let raw = await data.entries.get({
-    pk: entryID.substr(0, 9),
-    sk: entryID,
+  let note = await data.entries.update({
+    Key: { 
+      pk: `note-${ entryID.substr(0, 4) }`, 
+      sk : `note-${ entryID }`
+    },
+    UpdateExpression: `set ${updates.join(',)}`,
+    ExpressionAttributeNames,
+    ExpressionAttributeValues,
   })
-  raw.content = content
-  if (state) 
-    raw.state = state
-  let updated = await data.entries.put(raw)
-  delete updated.pk
-  delete updated.sk
-  updated.entryID = entryID
-  return updated
+  return fmt(note)
 }
 
 // @returns void
@@ -137,12 +155,7 @@ export async function list (params={}) {
   let raw = await data.entries.query(expr)
 
   let res = {
-    notes: raw.Items.map(function fmt (note) {
-      note.entryID = note.sk
-      delete note.pk
-      delete note.sk
-      return note
-    })
+    notes: raw.Items.map(fmt)
   }
 
   if (raw.LastEvaluatedKey)

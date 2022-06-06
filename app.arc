@@ -9,6 +9,7 @@ fingerprint true
 
 @events
 webmention-send
+populate-in-reply-to
 
 @http
 get /
