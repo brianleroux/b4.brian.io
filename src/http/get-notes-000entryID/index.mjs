@@ -40,6 +40,7 @@ export async function handler (req) {
   let meta = `<https://${process.env.DOMAIN}/meta>; rel="indieauth-metadata"`
   let auth = `<https://${process.env.DOMAIN}/auth>; rel="authorization_endpoint"`
   let token = `<https://${process.env.DOMAIN}/token>; rel="token_endpoint"`
+  let webmention = `<https://${process.env.DOMAIN}/webmention>; rel="webmention"`
   let card = `<section class=card>${ render(note) }</section>`
 
   return {
@@ -49,7 +50,7 @@ export async function handler (req) {
       'content-type': 'text/html; charset=utf8'
     },
     multiValueHeaders: {
-      'Link': [meta, auth, token]
+      'Link': [meta, auth, token, webmention]
     },
     body: layout({ body: card })
   }

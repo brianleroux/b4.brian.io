@@ -9,6 +9,7 @@ fingerprint true
 
 @events
 webmention-send
+webmention-receive
 populate-in-reply-to
 
 @http
@@ -27,6 +28,7 @@ get /auth # indieauth consent screen
 post /approve # indieauth approval flow
 post /token # https://indieauth.spec.indieweb.org/#request
 post /auth # https://indieauth.spec.indieweb.org/#request
+post /webmention # https://webmention.net/draft/#receiving-webmentions
 
 any /* # catch all for 404
 
