@@ -48,8 +48,8 @@ export async function update ({ entryID, state, content, context }) {
   if (!entryID)
     throw Error('missing_entryID')
   let updates = []
-  ExpressionAttributeNames = {}
-  ExpressionAttributeValues = {}
+  let ExpressionAttributeNames = {}
+  let ExpressionAttributeValues = {}
   if (state) {
     updates.push('#state = :state')
     ExpressionAttributeNames['#state'] = 'state'
