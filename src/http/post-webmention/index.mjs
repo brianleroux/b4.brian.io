@@ -1,5 +1,6 @@
 import arc from '@architect/functions'
 
+/** receive webmentions */
 export let handler = arc.http.async(log, valid, fn)
 
 async function log (req) {

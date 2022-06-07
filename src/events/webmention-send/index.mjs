@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
-import getWebmentionEndpoint from './_get-webmention-endpoint.mjs'
+import findWebmention from '@architect/shared/find-webmention-endpoint.mjs'
 
 export let handler = arc.events.subscribe(sender)
 
@@ -17,7 +17,7 @@ async function sender ({ entryID, content, ttl, name }) {
     try {
 
       // attempt to discover the webmention endpoint
-      let url = await getWebmentionEndpoint(href)
+      let url = await findWebmention(href)
       if (url) {
 
         // post mention if it exists

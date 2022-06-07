@@ -1,6 +1,7 @@
 import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import { mf2 } from 'microformats-parser'
+import findWebmention from '@architect/shared/find-webmention-endpoint.mjs'
 
 export let handler = arc.events.subscribe(receive)
 
@@ -8,12 +9,12 @@ async function receive (payload) {
 
   console.log('received webmention', JSON.stringify(payload, null, 2))
 
-
-  // attempt to read the target
-  let targetReq = false 
+  // verify target.. which should be us in this case
+  // is legit (can receive webmentions)
+  let endpoint = false 
   try {
-    targetReq = await tiny.get({ url: target })
-    // verify target is legit (can receive webmentions)
+    endpoint = await findWebmention(target)
+    console.log('found legit endpoint', endpoint)
   }
   catch (e) {
     console.log('exiting due to bad target', e)
