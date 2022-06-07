@@ -25,9 +25,9 @@ async function populateInReplyTo ({ entryID, content, ttl, name }) {
 
       if (Array.isArray(items)) {
         console.log('found items', items)
-        let hentry = items.find(i => i.type === 'h-entry')
-        let hcard = items.find(i => i.type === 'h-card')
-        if (hcard && hentry) {
+        let hentry = items.find(i => i.type.includes('h-entry'))
+        let hcard = items.find(i => i.type.includes('h-card'))
+        if (hcard || hentry) {
           let result = await update({
             entryID,
             context: { hentry, hcard }
