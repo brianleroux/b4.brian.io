@@ -1,6 +1,6 @@
 import layout from './layout.mjs'
 import render from './_note.mjs'
-import form from './_note-form.mjs'
+import form from './_new-note-form.mjs'
 
 export default function admin ({ notes }) {
   let edit = n => { n.edit = true; return n }

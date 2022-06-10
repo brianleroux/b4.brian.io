@@ -7,8 +7,8 @@ export default function inReplyTo ({ icon, author, content, published, url }) {
   return `<div class="u-in-reply-to h-cite">
   <strong>↳ In reply to</strong>
   ${ img }
-  ${ name } 
-  ${ preview } 
+  ${ name }
+  ${ preview }
   ${ where }
  </div>`
 }

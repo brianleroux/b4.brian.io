@@ -1,6 +1,6 @@
 import arc from '@architect/functions'
 import { admin } from '@architect/shared/middleware.mjs'
-import { create } from '@architect/shared/notes.mjs'
+import create from '@architect/shared/notes/create.mjs'
 
 export let handler = arc.http.async(admin, createNote)
 

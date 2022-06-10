@@ -86,12 +86,6 @@ main section.content {}
   font-size: 1.7em;
 }
 
-.p-name {
-  margin: 5px;
-  font-size: normal;
-  color: rgb(255,255,255, 0.7);
-}
-
 .hero-container {
   box-shadow: inset 0 0 10px #000000;
   background:#000;
@@ -149,6 +143,42 @@ article {
   font-size: 1.2em;
 }
 
+.e-content a {
+  display: inline;
+  font-size: 1em;
+}
+
+.u-in-reply-to {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 10px 0 10px;
+  border-radius: 5px;
+}
+
+.u-in-reply-to strong {
+  display:block;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.6em;
+  font-weight: normal;
+  color: #3b424c;
+  text-align: left;
+
+}
+.u-in-reply-to .p-content {
+  padding: 10px;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.u-in-reply-to .dt-published {
+  display: block;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7em;
+  padding: 10px;
+}
+
+
 article .p-author {
   display: none;
 }
@@ -187,4 +217,24 @@ form.note-destroy p {
 .note-destroy > p > a:nth-child(3) {
   margin: 0;
   font-size: 1em;
+}
+
+/* form*/
+input[type=radio], .tab { 
+  display: none; 
+}
+
+input[type=radio] + label { 
+  display: inline-block 
+} 
+
+input[type=radio]:checked + label { 
+  color: lightgreen;
+} 
+
+#note:checked ~ .tab.new-note,
+#comment:checked ~ .tab.new-comment,
+#repost:checked ~ .tab.new-repost,
+#like:checked ~ .tab.new-like {
+  display: block; 
 }

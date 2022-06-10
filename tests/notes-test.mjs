@@ -1,13 +1,11 @@
 import test from 'tape'
 import sandbox from '@architect/sandbox'
 
-import {
-  create,
-  read,
-  update,
-  destroy,
-  list,
-} from '../src/shared/notes.mjs'
+import create from '../src/shared/notes/create.mjs'
+import read from '../src/shared/notes/read.mjs'
+import update from '../src/shared/notes/update.mjs'
+import destroy from '../src/shared/notes/destroy.mjs'
+import list from '../src/shared/notes/list.mjs'
 
 test('start', async t => {
   t.plan(4)
@@ -16,6 +14,16 @@ test('start', async t => {
   t.ok(typeof destroy === 'function', 'destroy is a function')
   await sandbox.start({quiet:true})
   t.pass('start')
+})
+
+test('clear seed', async t => {
+  t.plan(2)
+  let res = await list({})
+  t.ok(Array.isArray(res.notes), 'first page of notes')
+  for (let n of res.notes)
+    await destroy(n)
+  let res2 = await list({})
+  t.ok(res2.notes.length === 0, 'no mo notes')
 })
 
 test('create', async t => {
@@ -88,8 +96,6 @@ test('test list after destroy', async t => {
   let n = await read({ entryID: note.entryID })
   t.ok(n.state === 'deleted', 'got deleted x for Gone responses')
 })
-
-// read a note with all replies
 
 test('end', async t => {
   t.plan(1)

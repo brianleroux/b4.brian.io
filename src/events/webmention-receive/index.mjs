@@ -13,7 +13,7 @@ async function receive (payload) {
   // is legit (can receive webmentions)
   let endpoint = false 
   try {
-    endpoint = await findWebmention(target)
+    endpoint = await findWebmention(payload.target)
     console.log('found legit endpoint', endpoint)
   }
   catch (e) {

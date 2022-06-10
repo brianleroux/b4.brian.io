@@ -1,6 +1,7 @@
 import arc from '@architect/functions'
 import { admin } from '@architect/shared/middleware.mjs'
-import { read, destroy } from '@architect/shared/notes.mjs'
+import read from '@architect/shared/notes/read.mjs'
+import destroy from '@architect/shared/notes/destroy.mjs'
 
 export let handler = arc.http.async(admin, destroyNote)
 

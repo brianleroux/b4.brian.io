@@ -8,10 +8,13 @@ return `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="indieauth-metadata" href="https://${domain}/meta">
   <link rel="authorization_endpoint" href="https://${domain}/auth">
   <link rel="token_endpoint" href="https://${domain}/token">
   <link rel="webmention" href="https://${domain}/webmention">
+  <link rel="micropub" href="https://${domain}/micropub">
+
   <title>brian.io</title>
   <link rel="stylesheet" href="${ arc.static(css) }">
   <style>

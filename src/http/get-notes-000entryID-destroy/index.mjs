@@ -2,7 +2,7 @@ import arc from '@architect/functions'
 import layout from '@architect/views/layout.mjs'
 import { notFound, gone } from '@architect/views/errors.mjs'
 import { friendly, fmt } from '@architect/views/_fmt-date.mjs'
-import { read } from '@architect/shared/notes.mjs'
+import read from '@architect/shared/notes/read.mjs'
 
 export let handler = arc.http.async(fn)
 

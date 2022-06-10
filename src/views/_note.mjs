@@ -1,22 +1,26 @@
 import arc from '@architect/functions'
 import form from './_note-form.mjs'
+import reply from './_in-reply-to.mjs'
 import { friendly, fmt } from './_fmt-date.mjs'
 
-export default function renderNote ({ entryID, name, content, edit=false }) {
+export default function renderNote ({ entryID, type='note', content, context, edit=false }) {
 
-  let nom = name? `<h2 class=p-name>${ name }</h2>` : ''
-  let body = edit === false? content : form({ entryID, name, content })
+  let body = edit === false? content : form({ entryID, type, content })
+  let replying = context? reply(context) : ''
 
   return `
   <article class=h-entry>
-    ${ nom }
     ${ navbar({ entryID, edit }) }
-
     <div class=e-content>${ body }</div>
-  
+    ${ replying }
     <a class=p-category style=display:none href=/>uncategorized</a>
-    <aside class="h-card p-author" style=display:none;>
-      <a class="u-url u-uid" rel=me href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a>
+    <aside 
+      class="h-card p-author" 
+      style=display:none;>
+      <a 
+        class="u-url u-uid" 
+        rel=me 
+        href=https://${ process.env.DOMAIN }>${ process.env.DOMAIN }</a>
       <img class=u-photo src=${ arc.static('/profile.jpg') }>
       <p class=p-name rel=author>${ process.env.NAME }</p>
     </aside>

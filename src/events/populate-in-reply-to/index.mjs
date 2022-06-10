@@ -2,7 +2,7 @@ import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
 import { mf2 } from 'microformats-parser'
-import { update } from '@architect/shared/notes.mjs'
+import update from '@architect/shared/notes/update.mjs'
 
 export let handler = arc.events.subscribe(populateInReplyTo)
 
@@ -29,7 +29,7 @@ async function populateInReplyTo ({ entryID, content, ttl, name }) {
 // looking for {icon, author, content, published, url }
 async function read ({ baseUrl }) {
   let { body } = await tiny.get({ url:baseUrl })
-  let { items, rels } = result = mf2(body, { baseUrl })
+  let { items, rels } = mf2(body, { baseUrl })
 
   // look for icon
   let icon = rels.icon? rels.icon[0] : false

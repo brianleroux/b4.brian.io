@@ -1,4 +1,4 @@
-import { list } from '@architect/shared/notes.mjs'
+import list from '@architect/shared/notes/list.mjs'
 import render from '@architect/views/index.mjs'
 
 /** note; we are using a plugin for multiValueheaders */

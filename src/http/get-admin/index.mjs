@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import login from '@architect/views/login.mjs'
 import admin from '@architect/views/admin.mjs'
-import { list } from '@architect/shared/notes.mjs'
+import list from '@architect/shared/notes/list.mjs'
 
 export let handler = arc.http.async(render)
 

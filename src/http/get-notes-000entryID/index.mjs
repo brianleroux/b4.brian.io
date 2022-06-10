@@ -3,7 +3,7 @@ import layout from '@architect/views/layout.mjs'
 import render from '@architect/views/_note.mjs'
 import { notFound, gone } from '@architect/views/errors.mjs'
 import { friendly, fmt } from '@architect/views/_fmt-date.mjs'
-import { read } from '@architect/shared/notes.mjs'
+import read from '@architect/shared/notes/read.mjs'
 
 /** note; we are using a plugin for multiValueheaders */
 export async function handler (req) {
