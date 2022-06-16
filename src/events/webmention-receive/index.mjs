@@ -31,6 +31,14 @@ async function receive (payload) {
       let hentry = items.find(i => i.type === 'h-entry')
       let hcard = items.find(i => i.type === 'h-card')
       // if this is all true write the reply to the db!
+      /**
+       * let data = await arc.tables()
+       * await data.entries.put({
+       *   pk: entryID,
+       *   sk: new Date(Date.now()).toISOString() + '-mention',
+       *   ...props,
+       * })
+       */
     }
   }
   catch (e) {

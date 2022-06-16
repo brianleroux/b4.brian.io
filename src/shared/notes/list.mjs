@@ -1,7 +1,7 @@
 import arc from '@architect/functions'
 import fmt from './_fmt.mjs'
 
-// list ({ cursor? }): { cursor?, notes[] }
+// list ({ cursor?, year?=2022 }): { cursor?, notes[] }
 export default async function list (params={}) {
 
   let expr = {

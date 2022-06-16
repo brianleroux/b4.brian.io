@@ -2,25 +2,15 @@ import arc from '@architect/functions'
 import tiny from 'tiny-json-http'
 import getHrefs from 'get-hrefs'
 import { mf2 } from 'microformats-parser'
-import update from '@architect/shared/notes/update.mjs'
 
-export let handler = arc.events.subscribe(populateInReplyTo)
-
-// { icon?, author?, content?, published?, url }
-async function populateInReplyTo ({ entryID, content, ttl, name }) {
-
-  // log the incoming payload
-  console.log(JSON.stringify({ entryID, content, ttl, name }, null, 2))
-
-  // parse content for hrefs
+/** best effort attempt to get reply context */
+export default async function replyContext (content) {
   let baseUrl = getHrefs(content)[0]
   if (baseUrl) {
     try {
-      let context = await read({ baseUrl })
-      let result = await update({ entryID, context })
+      return read({ baseUrl })
     }
     catch (e) {
-      // log failure and continue
       console.log('swallowing', e) 
     }
   }

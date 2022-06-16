@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "sandbox",
-    "test": "node tests/notes-test.mjs | tap-spec",
+    "test": "tape tests/notes-test.mjs | tap-spec",
     "lint": "eslint src --fix"
   },
   "dependencies": {

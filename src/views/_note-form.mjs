@@ -5,17 +5,19 @@ export default function noteForm (note) {
 
     note: `
     <form action=/notes${note.entryID? '/' + note.entryID : ''} method=post>
-      <input type=hidden name=type value=note>
       <textarea name=content 
         placeholder="entry content" 
-        required>${note.content? note.content : ''}</textarea>
+        required>${note.content || ''}</textarea>
       <button>💾 ${note.entryID? 'Update' : 'Create'}</button>
     </form>`,
 
     comment: `
   <form action=/notes${note.entryID? '/' + note.entryID : ''} method=post>
-    <input type=hidden name=type value=comment>
-    <input type=text name=url placeholder="reply URL">
+    <input type=text 
+      name=comment 
+      value="${note.reply || ''}"
+      placeholder="URL the comment replies to" 
+      required>
     <textarea name=content 
       placeholder="entry content" required>${note.content? note.content : ''}</textarea>
       <button>💾 ${note.entryID? 'Update' : 'Create'}</button>
@@ -23,20 +25,23 @@ export default function noteForm (note) {
 
     repost: `
     <form action=/notes${note.entryID? '/' + note.entryID : ''} method=post>
-      <input type=hidden name=type value=repost>
-      <input type=text name=url placeholder="reply URL">
       <textarea name=content 
-        placeholder="entry content" 
-        required>${note.content? note.content : ''}</textarea>
-        <button>💾 ${note.entryID? 'Update' : 'Create'}</button>
+        placeholder="entry content">${note.content? note.content : ''}</textarea>
+      <input type=text 
+        name=repost 
+        value="${note.reply || ''}"
+        placeholder="URL being reposted" required>
+      <button>💾 ${note.entryID? 'Update' : 'Create'}</button>
     </form>`,
 
     like: `
     <form action=/notes${note.entryID? '/' + note.entryID : ''} method=post>
-      <input type=hidden name=type value=like>
-      <input type=checkbox name=like class=toggle-heart id=${likeID}>
-      <label for=${likeID} class=toggle-heart-label aria-label=like>❤</label>
-      <input type=text name=url placeholder="reply URL">
+      <label>❤</label>
+      <input type=text 
+        name=like 
+        value="${note.reply || ''}"
+        placeholder="URL you like" 
+        required>
       <button>💾 ${note.entryID? 'Update' : 'Create'}</button>
     </form>`,
   }

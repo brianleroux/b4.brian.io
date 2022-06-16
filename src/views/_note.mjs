@@ -1,12 +1,13 @@
 import arc from '@architect/functions'
 import form from './_note-form.mjs'
-import reply from './_in-reply-to.mjs'
+import url from './_in-reply-to.mjs'
 import { friendly, fmt } from './_fmt-date.mjs'
 
-export default function renderNote ({ entryID, type='note', content, context, edit=false }) {
+export default function renderNote ({ entryID, type='note', content='', context, reply, tags=[], edit=false }) {
 
-  let body = edit === false? content : form({ entryID, type, content })
-  let replying = context? reply(context) : ''
+  let body = edit === false? content : form({ entryID, type, content, reply })
+  let replying = url(context || {url:reply})
+  let categories = tags.length > 0? tags.map(t=> `<a href=/tags/${t}>${t}</a>`).join('') : '&nbsp;'
 
   return `
   <article class=h-entry>
@@ -24,6 +25,7 @@ export default function renderNote ({ entryID, type='note', content, context, ed
       <img class=u-photo src=${ arc.static('/profile.jpg') }>
       <p class=p-name rel=author>${ process.env.NAME }</p>
     </aside>
+    <blockquote>${ categories }</blockquote>
   </article>
   `
 }

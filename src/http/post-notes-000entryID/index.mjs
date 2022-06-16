@@ -1,42 +1,14 @@
 import arc from '@architect/functions'
 import { admin } from '@architect/shared/middleware.mjs'
-import read from '@architect/shared/notes/read.mjs'
+import { findNote } from '@architect/shared/middleware.mjs'
 import update from '@architect/shared/notes/update.mjs'
 
-export let handler = arc.http.async(admin, updateNote)
+export let handler = arc.http.async(admin, findNote, updator)
 
-async function updateNote (req) {
-
-  // check for note
-  let entryID = req.params.entryID 
-  let note = await read({ entryID })
-  if (!note) {
-    return {
-      location: '/admin'
-    }
-  }
-
-  // update the note
-  note.content = req.body.content
-  note.updated = new Date(Date.now()).toISOString()
-
-  // optional properties
-  if (req.body.ttl) note.ttl = req.body.ttl
-  if (req.body.name) note.name = req.body.name
-
-  // write to dynamo and shoot off webmention-sender async event
-  await Promise.all([
-    update(note),
-    arc.events.publish({ 
-      name: 'webmention-send', 
-      payload: note
-    }),
-    arc.events.publish({ 
-      name: 'populate-in-reply-to', 
-      payload: note
-    }),
-  ])
-
+async function updator (req) {
+  req.note.content = req.body.content
+  req.note.updated = new Date(Date.now()).toISOString()
+  await update(req.note)
   return {
     location: '/admin'
   }

@@ -5,13 +5,10 @@ import fmt from './_fmt.mjs'
 export default async function read ({ entryID }) {
   let data = await arc.tables()
   let raw = await data.entries.get({
-    pk: entryID.substr(0, 9),
+    pk: `note-${ entryID.split('-').shift() }`,
     sk: entryID,
   })
   if (!raw) 
     throw Error(`not_found: ${ entryID }`)
-  delete raw.pk
-  delete raw.sk
-  raw.entryID = entryID
-  return raw
+  return fmt(raw)
 }
